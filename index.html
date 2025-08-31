@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Majin Buu Frustrado!</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            text-align: center;
+            background: #fff;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .screen-container {
+            position: relative;
+            width: 400px;
+            height: 300px;
+            margin: 0 auto;
+        }
+
+        #tv-screen, #majin-buu {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        #majin-buu.frustrated {
+            animation: shake 0.5s infinite;
+        }
+
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            25% { transform: translate(-1px, -2px) rotate(-1deg); }
+            50% { transform: translate(-3px, 0px) rotate(1deg); }
+            75% { transform: translate(1px, -1px) rotate(0deg); }
+            100% { transform: translate(1px, 1px) rotate(0deg); }
+        }
+
+        button {
+            margin-top: 20px;
+            padding: 12px 24px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #ff6347; /* Un color de botón vibrante */
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #e5533d;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>¡Majin Buu quiere ver televisión!</h1>
+        <div class="screen-container">
+            <img id="tv-screen" src="https://i.ibb.co/6y4tL14/tv-off.png" alt="Pantalla de TV apagada">
+            <img id="majin-buu" src="https://i.ibb.co/Bnmj32r/majin-buu-frustrated.gif" alt="Majin Buu frustrado">
+        </div>
+        <button id="fix-button">¡Arreglar la televisión!</button>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const majinBuu = document.getElementById('majin-buu');
+            const tvScreen = document.getElementById('tv-screen');
+            const fixButton = document.getElementById('fix-button');
+
+            // Estado inicial de frustración (ya definido en el HTML con la URL del GIF)
+            majinBuu.classList.add('frustrated');
+            fixButton.innerText = '¡Arreglar la televisión!';
+
+            // Evento al hacer clic en el botón
+            fixButton.addEventListener('click', () => {
+                // Detiene la animación y cambia las imágenes a la versión "feliz"
+                majinBuu.classList.remove('frustrated');
+                // URL de ejemplo para un Majin Buu feliz
+                majinBuu.src = 'https://i.ibb.co/3s6K8fD/majin-buu-happy.gif';
+                // URL de ejemplo para la TV encendida
+                tvScreen.src = 'https://i.ibb.co/k0c1yKk/tv-on.png';
+                fixButton.innerText = '¡Listo!';
+            });
+        });
+    </script>
+
+</body>
+</html>
